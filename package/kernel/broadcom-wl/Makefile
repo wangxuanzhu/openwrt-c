@@ -24,7 +24,7 @@ endif
 
 PKG_EXTMOD_SUBDIRS:=driver driver-mini glue
 
-PKG_USE_MIPS16:=0
+PKG_BUILD_FLAGS:=no-mips16
 PKG_FLAGS:=nonshared
 
 include $(INCLUDE_DIR)/package.mk
@@ -99,8 +99,7 @@ define Package/nas/description
  proprietary Broadcom wl driver.
 endef
 
-MAKE_KMOD := $(MAKE) -C "$(LINUX_DIR)" \
-		$(KERNEL_MAKE_FLAGS) \
+MAKE_KMOD := $(KERNEL_MAKE) \
 		PATH="$(TARGET_PATH)" \
 		M="$(PKG_BUILD_DIR)/kmod" \
 

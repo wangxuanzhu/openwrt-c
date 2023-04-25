@@ -16,6 +16,7 @@
 
 	chosen {
 		bootargs = "console=ttyS0,115200";
+		bootargs-override = "console=ttyS0,115200";
 	};
 
 	keys {
@@ -137,8 +138,11 @@
 	};
 };
 
-&pcie2 {
-	status = "disabled";
+&state_default {
+	gpio {
+		groups = "jtag";
+		function = "gpio";
+	};
 };
 
 &switch0 {
